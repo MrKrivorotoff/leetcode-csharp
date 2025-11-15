@@ -10,8 +10,8 @@ public class Solution
         var rootNode = GetCandidateToAppend(list1, list2);
         if (rootNode is null) return null;
 
-        var currentNode = rootNode;
         var candidateToPostpone = ReferenceEquals(rootNode, list1) ? list2 : list1;
+        var currentNode = rootNode;
         while (true)
         {
             var candidateToAppend = GetCandidateToAppend(currentNode.next, candidateToPostpone);
@@ -31,24 +31,24 @@ public class Solution
     {
         var rootNode = GetCandidateToAppend(list1, list2);
         if (rootNode == null) return null;
-        var resultRootNode = new ListNode(rootNode.val);
+        var newList = new ListNode(rootNode.val);
 
-        var resultNode = resultRootNode;
         var node1 = rootNode.next;
         var node2 = ReferenceEquals(rootNode, list1) ? list2 : list1;
+        var currentNode = newList;
         while (true) {
             var candidate = GetCandidateToAppend(node1, node2);
             if (candidate == null)
                 break;
-            if (ReferenceEquals(node1, candidate))
+            if (ReferenceEquals(candidate, node1))
                 node1 = node1.next;
             else
                 node2 = node2!.next;
-            resultNode.next = new ListNode(candidate.val);
-            resultNode = resultNode.next;
+            currentNode.next = new ListNode(candidate.val);
+            currentNode = currentNode.next;
         }
 
-        return resultRootNode;
+        return newList;
     }
 
     private static ListNode? GetCandidateToAppend(ListNode? node1, ListNode? node2)
