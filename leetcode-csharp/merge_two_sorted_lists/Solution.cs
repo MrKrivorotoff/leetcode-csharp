@@ -1,31 +1,32 @@
 namespace leetcode_csharp.merge_two_sorted_lists;
 
-public class Solution {
-    public ListNode? MergeTwoLists(ListNode? list1, ListNode? list2) {
-        if (list1 == null) return list2;
-        if (list2 == null) return list1;
-        return MergeNodes(null, list1, list2);
+public class Solution
+{
+    public ListNode? MergeTwoLists(ListNode? list1, ListNode? list2)
+    {
+        var rootNode = GetCandidateToAppend(list1, list2);
+        if (rootNode == null) return null;
+
+        var currentNode = rootNode;
+        var candidateToPostpone = ReferenceEquals(rootNode, list1) ? list2 : list1;
+        while (true)
+        {
+            var candidateToAppend = GetCandidateToAppend(currentNode.next, candidateToPostpone);
+            if (candidateToAppend == null) break;
+            candidateToPostpone = ReferenceEquals(candidateToAppend, currentNode.next)
+                ? candidateToPostpone
+                : currentNode.next;
+            currentNode.next = candidateToAppend;
+            currentNode = currentNode.next;
+        }
+
+        return rootNode;
     }
 
-    private static ListNode? MergeNodes(ListNode? previousNode, ListNode? node1, ListNode? node2) {
-        ListNode? nextPreviousNode;
-        ListNode? nextCandidate1;
-        ListNode? nextCandidate2;
-        if ((node2 == null) || ((node1 != null) && (node1.val < node2.val))) {
-            if (previousNode != null)
-                previousNode.next = node1;
-            nextPreviousNode = node1;
-            nextCandidate1 = node1.next;
-            nextCandidate2 = node2;
-        } else {
-            if (previousNode != null)
-                previousNode.next = node2;
-            nextPreviousNode = node2;
-            nextCandidate1 = node1;
-            nextCandidate2 = node2.next;
-        }
-        if (nextCandidate1 != null || nextCandidate2 != null)
-            MergeNodes(nextPreviousNode, nextCandidate1, nextCandidate2);
-        return nextPreviousNode;
+    private static ListNode? GetCandidateToAppend(ListNode? node1, ListNode? node2)
+    {
+        if (node1 == null) return node2;
+        if (node2 == null) return node1;
+        return node1.val < node2.val ? node1 : node2;
     }
 }
