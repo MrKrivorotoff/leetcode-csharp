@@ -15,7 +15,8 @@ public class Solution
         while (true)
         {
             var candidateToAppend = GetCandidateToAppend(currentNode.next, candidateToPostpone);
-            if (candidateToAppend is null) break;
+            if (candidateToAppend is null)
+                break;
             candidateToPostpone = ReferenceEquals(candidateToAppend, currentNode.next)
                 ? candidateToPostpone
                 : currentNode.next;
@@ -37,9 +38,12 @@ public class Solution
         var node2 = ReferenceEquals(rootNode, list1) ? list2 : list1;
         while (true) {
             var candidate = GetCandidateToAppend(node1, node2);
-            if (candidate == null) break;
-            if (ReferenceEquals(node1, candidate)) node1 = node1.next;
-            else node2 = node2!.next;
+            if (candidate == null)
+                break;
+            if (ReferenceEquals(node1, candidate))
+                node1 = node1.next;
+            else
+                node2 = node2!.next;
             resultNode.next = new ListNode(candidate.val);
             resultNode = resultNode.next;
         }
