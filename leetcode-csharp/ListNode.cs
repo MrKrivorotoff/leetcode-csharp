@@ -10,10 +10,14 @@ public sealed class ListNode
         this.val = val;
         this.next = next;
     }
+
+    public static ListNode? OfValues() => null;
     
-    public static ListNode? OfValues(params int[] values) {
-        ListNode? current = null;
-        for (var i = values.Length - 1; i >= 0; i--)
+    public static ListNode OfValues(params ReadOnlySpan<int> values) {
+        if (values.IsEmpty)
+            throw new ArgumentException(null, nameof(values));
+        var current = new ListNode(values[^1]);
+        for (var i = values.Length - 2; i >= 0; i--)
             current = new ListNode(values[i], current);
         return current;
     }
