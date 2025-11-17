@@ -9,7 +9,8 @@ public class Solution
         .Select(SelectFizzBuzzOrNumber)
         .ToList();
 
-    private static IList<string> FizzBuzzUsingSimpleIteration(int number) {
+    private static IList<string> FizzBuzzUsingSimpleIteration(int number)
+    {
         var result = new List<string>(number);
         for (var i = 1; i <= number; i++)
             result.Add(SelectFizzBuzzOrNumber(i));

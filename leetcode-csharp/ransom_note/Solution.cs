@@ -2,7 +2,8 @@ namespace leetcode_csharp.ransom_note;
 
 public class Solution
 {
-    public bool CanConstruct(string ransomNote, string magazine) {
+    public bool CanConstruct(string ransomNote, string magazine)
+    {
         var numberByLetter = new Dictionary<char, int>();
         foreach (var currentLetter in magazine)
         {
