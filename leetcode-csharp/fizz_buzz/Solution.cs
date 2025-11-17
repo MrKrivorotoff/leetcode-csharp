@@ -1,6 +1,7 @@
 namespace leetcode_csharp.fizz_buzz;
 
-public class Solution {
+public class Solution
+{
     public IList<string> FizzBuzz(int n) => FizzBuzzUsingSimpleIteration(n);
 
     private static IList<string> FizzBuzzUsingLinq(int number) => Enumerable
