@@ -26,14 +26,12 @@ public static class TreeNodeFactory
         var value = values[GetIndexOfNode(steps, currentStepIndex)];
         if (value == null)
             return null;
-        if (currentStepIndex < steps.Length - 1)
-        {
-            var left = CreateNode(steps, currentStepIndex + 1, 0, values);
-            var right = CreateNode(steps, currentStepIndex + 1, 1, values);
-            return new TreeNode((int)value, left, right);
-        }
+        if (currentStepIndex == steps.Length - 1)
+            return new TreeNode((int)value);
+        var left = CreateNode(steps, currentStepIndex + 1, 0, values);
+        var right = CreateNode(steps, currentStepIndex + 1, 1, values);
+        return new TreeNode((int)value, left, right);
 
-        return new TreeNode((int)value);
     }
 
     private static int GetIndexOfNode(int[] steps, int currentStepIndex)
