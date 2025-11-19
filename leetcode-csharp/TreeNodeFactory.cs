@@ -1,6 +1,6 @@
 namespace leetcode_csharp;
 
-public static class TreeNodeFactory
+public sealed partial class TreeNode
 {
     public static TreeNode? OfValues(params ReadOnlySpan<int?> values)
     {

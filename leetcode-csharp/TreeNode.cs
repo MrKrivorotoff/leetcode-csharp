@@ -1,6 +1,6 @@
 namespace leetcode_csharp;
 
-public sealed class TreeNode
+public sealed partial class TreeNode
 {
     public int val;
     public TreeNode? left;
