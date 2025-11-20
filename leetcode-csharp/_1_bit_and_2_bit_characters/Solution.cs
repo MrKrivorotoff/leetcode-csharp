@@ -4,12 +4,10 @@ public class Solution
 {
     public bool IsOneBitCharacter(int[] bits)
     {
-        var numberOfBits = -1;
+        var i = 0;
         var bitsLength = bits.Length;
-        for (var i = 0; i < bitsLength;) {
-            numberOfBits = (bits[i] == 1) ? 2 : 1;
-            i += numberOfBits;
-        }
-        return numberOfBits == 1;
+        while (i < bitsLength - 1)
+            i += bits[i] + 1;
+        return i == bitsLength - 1;
     }
 }
