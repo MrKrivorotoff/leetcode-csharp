@@ -6,7 +6,8 @@ public class Solution
     {
         var numsLength = nums.Length;
         for (int i = 0, lastIndOf1 = -1; i < numsLength; i++)
-            if (nums[i] == 1) {
+            if (nums[i] == 1)
+            {
                 if (lastIndOf1 != -1 && (i - lastIndOf1) <= k)
                     return false;
                 lastIndOf1 = i;

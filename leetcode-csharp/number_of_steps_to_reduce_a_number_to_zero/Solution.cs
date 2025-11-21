@@ -6,7 +6,8 @@ public class Solution
     {
         var counter = 0;
         var current = num;
-        while (current != 0) {
+        while (current != 0)
+        {
             if ((current & 1) == 1)
                 current--;
             else

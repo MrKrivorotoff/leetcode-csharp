@@ -36,7 +36,8 @@ public class Solution
         var node1 = rootNode.next;
         var node2 = ReferenceEquals(rootNode, list1) ? list2 : list1;
         var currentNode = newList;
-        while (true) {
+        while (true)
+        {
             var candidate = GetCandidateToAppend(node1, node2);
             if (candidate == null)
                 break;
